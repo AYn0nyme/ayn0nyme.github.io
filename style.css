@@ -3,11 +3,13 @@
     src: url(assets/Poppins.ttf);
     font-weight: normal;
 }
+
 @font-face {
     font-family: Poppins;
     src: url(assets/Poppins-Bold.ttf);
     font-weight: 700;
 }
+
 @font-face {
     font-family: Poppins;
     src: url(assets/Poppins-SemiBold.ttf);
@@ -27,6 +29,7 @@ body {
 }
 
 .fake-cookie {
+    z-index: 99999;
     background: rgba(2, 2, 2, .5);
     backdrop-filter: blur(3px);
     position: fixed;
@@ -82,7 +85,7 @@ section {
     justify-content: center;
 }
 
-section > div {
+section>div {
     align-self: center;
     display: flex;
     align-content: center;
@@ -116,6 +119,34 @@ section > div {
 
 #typewrite {
     font-weight: 600;
+    position: relative;
+}
+
+#typewrite::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    height: 90%;
+    width: 2px;
+    background: #f2f4f1;
+    transform: translateY(-50%);
+}
+
+#typewrite:not(.typing)::after {
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        background: #f2f4f1
+    }
+
+    50% {
+        background: #555;
+    }
 }
 
 .btns-like-its-just-boring-to-name-css-classes-idk-what-to-put-either-but-anyways {
@@ -123,6 +154,7 @@ section > div {
     gap: 10px;
     font-size: 1.25em;
 }
+
 .btns-like-its-just-boring-to-name-css-classes-idk-what-to-put-either-but-anyways a {
     color: #f2f4f1;
     text-decoration: none;

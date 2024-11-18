@@ -16,6 +16,7 @@ const wait = (duration) => {
 
 async function write(content, color) {
     typewriteElement.style.color = color;
+    typewriteElement.classList.add("typing")
     for (let i = 0; i < content.length + 1; i++) {
         let newContent = content.slice(0, i);
         await wait((Math.floor(Math.random() * 250) + 100))
@@ -25,14 +26,16 @@ async function write(content, color) {
 
 async function erease() {
     let content = typewriteElement.innerText;
+    typewriteElement.classList.add("typing")
     let anotherContentLength = typewriteElement.innerText.length;
-    for(anotherContentLength; anotherContentLength != -1; anotherContentLength--) {
+    for (anotherContentLength; anotherContentLength != -1; anotherContentLength--) {
         typewriteElement.innerText = content.slice(0, anotherContentLength);
         await wait((Math.floor(Math.random() * 100) + 50));
         console.log(anotherContentLength, content, typewriteElement.innerText)
     }
     typewriteElement.style.color = "#000";
-    await wait(1000)
+    typewriteElement.classList.remove("typing")
+    await wait(1000);
 }
 
 while (true) {
@@ -41,6 +44,7 @@ while (true) {
     const color = colors[randomIndex];
 
     await write(whatAmI, color);
+    typewriteElement.classList.remove("typing")
     await wait(5000);
     await erease();
 };
