@@ -1,0 +1,161 @@
+@font-face {
+    font-family: Poppins;
+    src: url(assets/Poppins.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(assets/Poppins-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(assets/Poppins-SemiBold.ttf);
+    font-weight: 600;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #262627;
+    color: #f2f4f1;
+    font-family: Poppins, sans-serif;
+}
+
+.fake-cookie {
+    z-index: 99999;
+    background: rgba(2, 2, 2, .5);
+    backdrop-filter: blur(3px);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.fake-cookie-container {
+    font-family: Poppins, sans-serif;
+    background: #333;
+    color: #f1f1f1;
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    border-radius: 2.5px;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, .45);
+}
+
+.fake-cookie-img img {
+    max-height: 96px;
+}
+
+.fake-cookie-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fake-cookie-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.fake-cookie-buttons button {
+    background: #222;
+    padding: 3px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    color: #f1f1f1;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+section>div {
+    align-self: center;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.about-img img {
+    max-height: 256px;
+    border-radius: 50%;
+}
+
+.about-text h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    font-size: 1.25em;
+}
+
+.another-boring-class-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5em;
+}
+
+
+#typewrite {
+    font-weight: 600;
+    position: relative;
+}
+
+#typewrite::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    height: 90%;
+    width: 2px;
+    background: #f2f4f1;
+    transform: translateY(-50%);
+}
+
+#typewrite:not(.typing)::after {
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        background: #f2f4f1
+    }
+
+    50% {
+        background: #555;
+    }
+}
+
+.btns-like-its-just-boring-to-name-css-classes-idk-what-to-put-either-but-anyways {
+    display: flex;
+    gap: 10px;
+    font-size: 1.25em;
+}
+
+.btns-like-its-just-boring-to-name-css-classes-idk-what-to-put-either-but-anyways a {
+    color: #f2f4f1;
+    text-decoration: none;
+}
