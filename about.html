@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ayn0nym3</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="about.css" />
-  </head>
-  <body>
-    <div class="container">
-      <img src="avatar.png" />
-      <div>
-        <!--TODO: Put infos about me-->
+
+<head>
+  <title>ayn0nym3</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" />
+  <link rel="icon" href="assets/avatar.png" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="small-infos"><img src="avatar.png" />
+      <div class="text">
+        <h2>👋 Hi! I'm AYnonyme.</h2>
+        <p>I'm a young developer who enjoys overcomplicating things lol<br>TUI>GUI</p>
       </div>
     </div>
-    <div class="links">
-      <!--TODO: Add social links-->
+    <div class="skills">
+      <i class="bx bxl-go-lang" style="--color: #00add8;" data-tooltip="Go"></i>
+      <i class="bx bxl-css3" style="--color: #663399;" data-tooltip="CSS"></i>
+      <i class="bx bxl-html5" style="--color: #f16529;" data-tooltip="HTML"></i>
+      <i class="bx bxl-javascript" style="--color: #f7df1e; color: #404040;" data-tooltip="JavaScript"></i>
+      <i class="bx bxl-typescript" style="--color: #3178c6;" data-tooltip="TypeScript"></i>
     </div>
-  </body>
+    <div class="links">
+      <a href="https://github.com/AYn0nyme" class="bx bxl-github"></a>
+      <a href="https://discord.com/users/943580965446512661" class="bx bxl-discord-alt"></a>
+    </div>
+    <a href="/" class="bx bxs-home"></a>
+  </div>
+
+
+  <script>
+    const skillElements = document.querySelectorAll(".skills i");
+    skillElements.forEach((skillElement) => {
+      skillElement.addEventListener("mouseenter", (e) => {
+        const languageName = skillElement.getAttribute("data-tooltip");
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("tooltip");
+        tooltip.innerText = languageName;
+        document.querySelector(".skills").appendChild(tooltip)
+      });
+      skillElement.addEventListener("mouseleave", (e) => {
+        const languageName = skillElement.getAttribute("data-tooltip");
+        const tooltip = document.getElementsByClassName("tooltip");
+        document.querySelector(".skills").removeChild(tooltip.item(0))
+      })
+    })
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/JetBrainsMono.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  background: #3c3c4f;
+  color: #cedced;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 3rem;
+  padding: 1rem;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.small-infos {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  position: relative;
+  border: 2px solid #cedced;
+  padding: 1rem;
+  width: 50%;
+}
+.small-infos::after {
+  content: "small infos";
+  position: absolute;
+  top: -10.5%;
+  background-color: #3c3c4f;
+  padding: 2px 5px;
+  left: 5%;
+}
+
+.small-infos img {
+  max-width: 128px;
+}
+
+.small-infos .text {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  position: relative;
+  border: 2px solid #cedced;
+  padding: 1rem;
+  padding-top: 2rem;
+  width: 50%;
+}
+.skills::after {
+  content: "skills";
+  position: absolute;
+  top: -20%;
+  background-color: #3c3c4f;
+  padding: 2px 5px;
+  left: 5%;
+}
+
+.skills i {
+  background-color: var(--color);
+  font-size: 1.5rem;
+  padding: .25rem;
+}
+
+.tooltip {
+  position: absolute;
+  top: 5px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  position: relative;
+  border: 2px solid #cedced;
+  width: 50%;
+  height: 50px;
+}
+.links::after {
+  content: "links";
+  position: absolute;
+  top: -40%;
+  left: 5%;
+  padding: 5px;
+  background: #3c3c4f;
+}
+
+.container a {
+  color: #ec9800;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.links a {
+  text-decoration: none;
+  color: #cedced;
+  font-size: 1.5rem;
+}
