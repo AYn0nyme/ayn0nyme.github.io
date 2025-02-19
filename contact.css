@@ -1,16 +1,30 @@
 @font-face {
-    font-family: "JetBrains Mono";
-    src: url("assets/JetBrainsMono.ttf");
+  font-family: "JetBrains Mono";
+  src: url("assets/JetBrainsMono.ttf");
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "JetBrains Mono";
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono";
 }
 
 body {
-    background: #3c3c4f;
-    color: #cedced;
+  background: #3c3c4f;
+  color: #cedced;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  padding: 1rem;
+  border: 2px solid #cedced;
+  width: 33%;
+}
+
+.container img {
+  max-width: 128px;
 }
