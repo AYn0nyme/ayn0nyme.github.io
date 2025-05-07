@@ -60,6 +60,10 @@ body > div {
   flex-direction: column;
 }
 
+a {
+  color: #cedced;
+}
+
 body > div > a {
   color: #ec9800;
   font-size: 1.25rem;
