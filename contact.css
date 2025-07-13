@@ -40,16 +40,21 @@ body {
 }
 
 .contact-things {
-  margin-top: 15px;
+  padding: 1rem;
+  border: 2px solid #cedced;
+  width: 33%;
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-evenly;
 }
-
-.line-break {
+.contact-things::after {
   position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #cedced;
-  left: 0;
-  margin: 10px 0;
+  content: "links";
+  top: -22%;
+  padding: 0 5px;
+  background: #3c3c4f;
+  left: 2%;
 }
 
 body > div {
