@@ -9,22 +9,24 @@
 </head>
 
 <body>
-    <div id="background"></div>
-    <div class="container">
-        <h2 id="time">00:00:00</h2>
-        <h4 id="date">Lorem, ipsum dolor.</h4>
-        <p>🙂 Welcome back.</p>
+	<div class="search-box">
+		<input id="searchInput" type="text" placeholder="Type 's' or '/' to start typing..."/>
+	</div>
 
-        <div class="input-container">
-            <input type="text" id="searchInput" placeholder="Search something...">
-        </div>
-    </div>
-
-
-
-    <div id="bookmarks"></div>
-
-    <script src="./index.js"></script>
+	<script>
+		document.addEventListener("keyup", (e) => {
+			if(e.key == "s" || e.key == '/') searchInput.focus();
+		});
+		searchInput.addEventListener("keydown", (e) => {
+			if(e.key == "Escape") searchInput.blur();
+			else if(e.key == "Enter") {
+				const a = document.createElement('a');
+				a.href = `https://duckduckgo.com/?q=${encodeURI(searchInput.value)}`
+				searchInput.value = "";
+				a.click();
+			}
+		})
+	</script>	
 </body>
 
 </html>
