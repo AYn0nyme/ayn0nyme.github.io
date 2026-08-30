@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Raging Rapids",
+        "id": "136796102",
+        "difficulty": 0,
+        "enjoyement": 9
+    },
+    {
+        "name": "Insomnia",
+        "id": "3332936",
+        "difficulty": 0,
+        "attempts": 508,
+        "enjoyement": 7.5,
+        "completion": "https://youtube.com/embed/3CWiczSgcdk"
+    },
+    {
+        "name": "Shrill Hallway",
+        "id": "36966088",
+        "difficulty": 1,
+        "attempts": 2977,
+        "enjoyement": 4,
+        "notes": "Hated that ship + UFO I think",
+        "completion": "https://www.youtube.com/embed/WShhcq4Xwb8"
+    },
+    {
+        "name": "Memory Lane",
+        "id": "110695801",
+        "difficulty": 0,
+        "attempts": 407,
+        "enjoyement": 10,
+        "notes": "Really cool level",
+        "completion": "https://www.youtube.com/embed/A36o86U-uKI"
+    },
+    {
+        "name": "Skeletal Shenanigans",
+        "id": "118509879",
+        "difficulty": 1,
+        "attempts": 1017,
+        "enjoyement": 8,
+        "notes": "W lags"
+    },
+    {
+        "name": "GG",
+        "id": "80998327",
+        "difficulty": 0,
+        "attempts": 144,
+        "enjoyement": 8
+    },
+    {
+        "hardest": true,
+        "name": "Nine Circles",
+        "id": "4284013",
+        "difficulty": 2,
+        "attempts": 10117,
+        "enjoyement": 3,
+        "notes": "Slop Circles | Also uh played this when I beat deadlocked (I was terrible still) so lot of attempts from there"
+    }
+]

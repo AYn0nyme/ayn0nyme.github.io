@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Completed Demons</title>
+	<meta charset="UTF-8" />
+	<style>
+		@font-face {
+			font-family: "Cheese Milky";
+			src: url(/assets/GD/Cheese\ Milky.otf);
+		}
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		body {
+			font-family: "Cheese Milky", sans-serif;
+			background: #181818;
+		}
+		h1 {
+			color: #FFF;
+			font-size: 4em;
+			text-align: center;
+			margin-bottom: 0.25em;
+		}
+		.green{
+			background: #00ff00;
+		}
+		.yellow {
+			background: #ffff00;
+		}
+		.orange {
+			background: #FFA500;
+		}
+		.red {
+			background: red;
+		}
+		.black {
+			background: #000;
+			color: #fff;
+		}
+		#completedDemonsTable {
+			text-align: center;
+		}
+		table {
+			background: #ccc;
+		}
+		td, th {
+			height: 120px;
+			border: 2px solid black;
+			background-position: center;
+			font-size: 1.5rem;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>idk my hardest levels ig</h1>
+	<table id="completedDemonsTable">
+		<thead>
+			<tr>
+				<th>N°</th>
+				<th>NAME</th>
+				<th>DIFFICULTY</th>
+				<th>ATTEMPTS</th>
+				<th>ENJOYEMENT</th>
+				<th>NOTES</th>
+				<th>COMPLETION</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<script>
+
+		function getDemonDifficulty(difficulty) {
+			switch (difficulty) {
+				case 0:
+					return "Easy Demon";
+				case 1:
+					return "Medium Demon";
+				case 2:
+					return "Hard Demon";
+				case 3:
+					return "Insane Demon";
+				case 4:
+					return "Extreme Demon";
+				default:
+					return "Unkown"; // How could this even happen breh
+			}
+		}
+		function getImageFromDifficulty(difficulty) {
+			let s;
+			switch (difficulty) {
+				case 0:
+					s = "Easy";
+					break
+				case 1:
+					s = "Medium";
+					break
+				case 2:
+					s = "Hard";
+					break
+				case 3:
+					s = "Insane";
+					break;
+				case 4:
+					s = "Extreme";
+					break;
+				default:
+					s = "NA"; // How could this even happen breh
+			}
+			s += ".webp";
+			return s;
+		}
+
+		async function imageBrightness(url) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+
+    return new Promise((resolve) => {
+        img.onload = () => {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            ctx.drawImage(img, 0, 0);
+
+            const pixels = ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            ).data;
+
+            let total = 0;
+
+            for (let i = 0; i < pixels.length; i += 4) {
+                // luminosité perceptuelle
+                total += (pixels[i] * 0.299) +
+                         (pixels[i + 1] * 0.587) +
+                         (pixels[i + 2] * 0.114);
+            }
+
+            const brightness = total / (pixels.length / 4);
+
+            resolve(brightness);
+        };
+
+        img.src = url;
+    });
+}
+
+		const currentUrl = URL.parse(window.location.href);
+		const completedDemonsTable = document.querySelector("#completedDemonsTable tbody");
+		const dataUrl = new URL(currentUrl);
+		dataUrl.pathname = dataUrl.pathname.replace("index.html", "data.json");
+		fetch(dataUrl.pathname).then(d => d.json()).then(async d => {
+			for (let i = 0; i < d.length; i++) {
+				const row = completedDemonsTable.insertRow();
+				row.insertCell().textContent = i + 1;
+				
+				const nameRow = row.insertCell();
+				let name;
+				if (d[i].difficulty == 4) {
+					let data = await (await fetch("https://api.aredl.net/v2/api/aredl/levels/"+d[i].id)).json();
+					name = `${d[i].name} (#${data.position})`
+				} else {
+					name = d[i].name;
+				}
+				nameRow.textContent = name;
+				const thumbnailUrl = `https://levelthumbs.prevter.me/thumbnail/${d[i].id}/small`;
+				nameRow.style.backgroundImage = `url("${thumbnailUrl}")`;
+				nameRow.style.width = `400px`;
+				nameRow.style.fontSize = "3rem";
+				const brightness = await imageBrightness(thumbnailUrl);
+				console.log(brightness)
+				if(brightness > 150) {
+					nameRow.style.color = "#000";
+					nameRow.style.webkitTextStroke = "2.5px #fff";
+				} else {
+					nameRow.style.color = "#fff";
+					nameRow.style.webkitTextStroke = "2.5px #000";
+				}
+				row.insertCell().innerHTML = `<img style="width: 30px;" src="/assets/GD/${getImageFromDifficulty(d[i].difficulty)}" /><span>${getDemonDifficulty(d[i].difficulty)}</span>`;
+				row.insertCell().textContent = d[i].attempts ? d[i].attempts.toLocaleString("en-US") : "Unknown";
+				const enjoyementCell = row.insertCell();
+				enjoyementCell.textContent = `${d[i].enjoyement}/10`;
+				if(d[i].enjoyement >= 8) {
+					enjoyementCell.classList.add("green");
+					console.log(enjoyementCell.outerHTML);
+				} else if(d[i].enjoyement >= 6) {
+					enjoyementCell.classList.add("yellow");
+				} else if(d[i].enjoyement >= 4) {
+					enjoyementCell.classList.add("orange");
+				} else if(d[i].enjoyement >= 1) {
+					enjoyementCell.classList.add("red");
+				} else {
+					enjoyementCell.classList.add("black");
+				}
+				let notes = "";
+				if(d[i].hardest) notes = "HARDEST! ";
+				if(d[i].notes) notes += d[i].notes;
+				else notes += "X";
+				row.insertCell().textContent = notes;
+				row.insertCell().innerHTML = `<iframe src="${d[i].completion}" width="300" height="169" frameborder="0" allowfullscreen></iframe>`;
+			}
+			console.log(completedDemonsTable.innerHTML);
+		});
+		
+	</script>
+</body>
+
+</html>
