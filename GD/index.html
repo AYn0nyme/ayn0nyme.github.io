@@ -153,11 +153,7 @@
     });
 }
 
-		const currentUrl = URL.parse(window.location.href);
-		const completedDemonsTable = document.querySelector("#completedDemonsTable tbody");
-		const dataUrl = new URL(currentUrl);
-		dataUrl.pathname = dataUrl.pathname.replace("index.html", "data.json");
-		fetch(dataUrl.pathname).then(d => d.json()).then(async d => {
+		fetch("/GD/data.json").then(d => d.json()).then(async d => {
 			for (let i = 0; i < d.length; i++) {
 				const row = completedDemonsTable.insertRow();
 				row.insertCell().textContent = i + 1;
